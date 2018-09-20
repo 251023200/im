@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>随访系统 - 在线交流</title>
+	<script src="/modules/common/js/head.js"></script>
+</head>
+<body>
+<div class="wrapper wrapper-content" style="height:100%;">
+	<div class="container-fluid formsearch round">
+		<!-- search -->
+		<form class="form-inline " style="display:block;">
+			<div>
+				<input id="userNo" type="text" class="form-control search" placeholder="请输入用户编号(精确)">
+				<input id="userName" type="text" class="form-control search" placeholder="请输入用户名(模糊)">
+				<input id="name" type="text" class="form-control search" placeholder="请输入姓名(模糊)">
+				<a class="btn btn-primary search" id="searchBtn"        onclick="searchUser()">查询</a>
+				<a class="btn btn-primary search" id="clearCondtion"    onclick="clearCondtion()">重置</a>
+				<a class="btn btn-primary search" id="addUser"    onclick="addUser()">添加</a>
+			</div>
+		</form>
+		<!-- end search -->
+	</div>
+	<div class="container-fluid formBox round">
+		<div class="row">
+			<div class="col-xs-12">
+				<table id="table" class="display tablesorter" cellspacing="0" width="100%">
+					<thead>
+						<tr>
+							<th>编码</th>
+							<th>用户名</th>
+							<th>姓名</th>
+							<th>邮箱</th>
+							<th>电话</th>
+							<th>手机</th>
+							<th>操作</th>
+						</tr>
+					</thead>
+				</table>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+<!-- dialog -->
+<div class="modal fade" id="viewUserModal" tabindex="-1" role="dialog" aria-hidden="true">
+	<div class="modal-dialog"> 
+	    <div class="modal-content"> 
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+				<h4 class="modal-title" id="dialogTitle">查看用户</h4>
+			</div>
+			<div class="modal-body">
+			   <form class="form-horizontal"  role="form" id="roleForm" style="padding-top:10px"  action="javascript:void(0)">
+		            <input type="text" id="id" style="display:none"/>
+		            <div class="form-group">
+						<label class="col-sm-2 control-label" >编号</label>
+						<div class="col-sm-4">
+							<input type="text" id="userNo" name="userNo"  placeholder="编号" class="form-control" readonly>
+				        </div>
+				        <label class="col-sm-2 control-label" >用户名</label>
+						<div class="col-sm-4">
+							<input type="text" id="userName" name="userName" placeholder="用户名" class="form-control" readonly>
+						</div>
+		            </div>
+					<div class="form-group">
+						<label class="col-sm-2 control-label" >姓名</label>
+						<div class="col-sm-4">
+							<input type="text" id="name" name="name" placeholder="姓名" class="form-control" readonly>
+						</div>
+						<label class="col-sm-2 control-label" >邮箱</label>
+						<div class="col-sm-4">
+							<input type="text" id="email" name="email" placeholder="邮箱" class="form-control" readonly>
+						</div>
+		            </div>
+					<div class="form-group">
+						<label class="col-sm-2 control-label" >电话</label>
+						<div class="col-sm-4">
+							<input type="text" id="telephone" name="telephone" placeholder="电话" class="form-control" readonly>
+						</div>
+						<label class="col-sm-2 control-label" >手机</label>
+						<div class="col-sm-4">
+							<input type="text" id="mobileTelephone" name="mobileTelephone" placeholder="手机" class="form-control" readonly>
+						</div>
+						<!-- 密码不能查看
+						<label class="col-sm-2 control-label" >登录密码</label>
+						<div class="col-sm-4">
+							<input type="text" id="password" name="password" placeholder="登录密码" class="form-control" readonly>
+						</div>
+						-->
+		            </div>
+				</form>
+			</div>
+		</div> 
+    </div>
+</div>
+<!-- dialog end -->
+
+<!-- dialog -->
+<div class="modal fade" id="userModal" tabindex="-1" role="dialog" aria-hidden="true">
+	<div class="modal-dialog"> 
+	    <div class="modal-content"> 
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+				<h4 class="modal-title" id="dialogTitle">查看用户</h4>
+			</div>
+			<div class="modal-body">
+			   <form class="form-horizontal"  role="form" id="roleForm" style="padding-top:10px"  action="javascript:void(0)">
+		            <input type="text" id="id" style="display:none"/>
+		            <div class="form-group">
+						<label class="col-sm-2 control-label" >编号</label>
+						<div class="col-sm-4">
+							<input type="text" id="userNo" name="userNo"  placeholder="编号" class="form-control">
+				        </div>
+				        <label class="col-sm-2 control-label" >用户名</label>
+						<div class="col-sm-4">
+							<input type="text" id="userName" name="userName" placeholder="用户名" class="form-control">
+						</div>
+		            </div>
+					<div class="form-group">
+						<label class="col-sm-2 control-label" >姓名</label>
+						<div class="col-sm-4">
+							<input type="text" id="name" name="name" placeholder="姓名" class="form-control">
+						</div>
+						<label class="col-sm-2 control-label" >邮箱</label>
+						<div class="col-sm-4">
+							<input type="text" id="email" name="email" placeholder="邮箱" class="form-control">
+						</div>
+		            </div>
+					<div class="form-group">
+						<label class="col-sm-2 control-label" >电话</label>
+						<div class="col-sm-4">
+							<input type="text" id="telephone" name="telephone" placeholder="电话" class="form-control">
+						</div>
+						<label class="col-sm-2 control-label" >手机</label>
+						<div class="col-sm-4">
+							<input type="text" id="mobileTelephone" name="mobileTelephone" placeholder="手机" class="form-control">
+						</div>
+		            </div>
+					
+					<div>	
+						<label class="col-sm-2 control-label" >密码</label>
+						<div class="col-sm-4">
+							<input type="password" id="password" name="password" placeholder="密码" class="form-control">
+						</div>
+		            </div>
+				</form>
+			</div>
+			<div class="modal-footer" id="op">
+				<button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+				<button type="button" class="btn btn-primary" onclick="saveUser()">确认</button>
+			</div>
+		 </div> 
+     </div>
+</div>
+
+<!-- dialog end -->
+
+
+<!--<script src="../../js/plugins/validate/bootstrapValidator.js"></script>-->
+<script src="../js/user-list.js?v=4"></script>
+</body>
+</html>

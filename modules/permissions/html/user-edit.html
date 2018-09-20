@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>权限系统 - 用户编辑</title>
+	
+	<script src="/modules/common/js/head.js"></script>
+	<link href="/js/plugins/bootstrap-fileinput-master/css/fileinput.css" media="all" rel="stylesheet" type="text/css"/>
+	<script src="/js/plugins/bootstrap-fileinput-master/js/fileinput.js" type="text/javascript"></script>
+	<script src="/js/plugins/bootstrap-fileinput-master/js/locales/zh.js" type="text/javascript"></script>
+</head>
+<body>
+<div id="UserEditPage" class="wrapper wrapper-content" style="height:100%;">
+	<center>用户信息</center>
+	<!--基本信息-->
+	<div id="userInfo" class="container-fluid formBox round">
+		<div class="handleBoxs row">
+			<div class="title col-xs-5 col-md-5">
+				<span>基本信息</span>
+			</div>
+			<!--
+			<div class="btn col-xs-7 col-md-7">
+				<a class="like btn btn-small btn-xs" href="javascript:void(0)" title="Like" onclick="saveUser()">
+					<span  class="btn btn-sm btn-info"  id="submitBtn" ><i class="glyphicon glyphicon-pencil"></i>保存</span>
+				</a>
+			</div>
+			-->
+		</div>
+		
+		<form id="userInfoForm" role="form">
+			<div class="row">
+				<div class="form-group fieldGroup">
+					<div class="col-sm-2 text-right">
+						<label for="userNo" class="control-label labelwordtop">编号</label>
+					</div>
+					<div class="col-sm-4">
+						<input type="text" class="form-control" id="userNo"  />
+					</div>
+					<div class="col-sm-2 text-right">
+						<label for="userName" class="control-label labelwordtop">用户名</label>
+					</div>
+					<div class="col-sm-4">
+						<input type="text" class="form-control" id="userName"  />
+					</div>
+					<div style="clear: both;"></div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="form-group fieldGroup">
+					<div class="col-sm-2 text-right">
+						<label for="name" class="control-label labelwordtop">姓名</label>
+					</div>
+					<div class="col-sm-4">
+						<input type="text" class="form-control" id="name"  />
+					</div>
+					<div class="col-sm-2 text-right">
+						<label for="email" class="control-label labelwordtop">邮箱</label>
+					</div>
+					<div class="col-sm-4">
+						<input type="text" class="form-control" id="email"  />
+					</div>
+					<div style="clear: both;"></div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="form-group fieldGroup">
+					<div class="col-sm-2 text-right">
+						<label for="telephone" class="control-label labelwordtop">电话</label>
+					</div>
+					<div class="col-sm-4">
+						<input type="text" class="form-control" id="telephone"  />
+					</div>
+					<div class="col-sm-2 text-right">
+						<label for="mobileTelephone" class="control-label labelwordtop">手机</label>
+					</div>
+					<div class="col-sm-4">
+						<input type="text" class="form-control" id="mobileTelephone"  />
+					</div>
+					<div style="clear: both;"></div>
+				</div>
+			</div>
+			
+		</form>
+	</div>
+	<br>
+	<div class="container-fluid formBox round">
+		<div class="handleBoxs row">
+			<div class="title col-xs-5 col-md-5">
+				<span>用户头像</span>
+			</div>
+		</div>
+		<form id="userInfoForm" role="form">
+			<div class="row">
+				<div class="col-xs-3 col-sm-2 col-md-2">
+					<!--
+					<img id="avatar" style="width:150px;height:200px" alt="头像" onerror="this.style.display='none'">
+					-->
+					
+					<img id="avatar" src="/img/defaut.js" style="float:left;width:150px;height:200px" alt="头像" onerror="showDefaultPicture()">
+					
+				</div>
+				
+				<div class="col-xs-offset-2 col-xs-6 col-sm-offset-1 col-sm-9 col-md-offset-0 col-md-10">
+					<input type="file" name="file" class="file" id="file"  />
+					<input id="fileId" type="hidden">
+					<input id="businessId" type="hidden">
+				</div>
+			</div>
+			<!--
+			<br>
+			<div class="row">
+				<div class="col-xs-12">
+					<input type="file" name="file" class="file" id="file"  />
+					<input id="fileId" type="hidden">
+					<input id="businessId" type="hidden">
+				</div>
+			</div>
+			-->
+		</form>
+	</div>		
+	<br>
+	<div id="opsBtn" class="container-fluid formBox round">
+		<div class="row">
+			<div class="col-xs-12 col-sm-4 col-sm-offset-4">
+				<a class="btn btn-primary" href="javascript:void(0)" onclick="saveUser()">提交</a>
+			</div>
+		</div>
+	</div>
+<!-- dialog end -->
+
+<!--<script src="../../js/plugins/validate/bootstrapValidator.js"></script>-->
+<script src="../js/user-edit.js"></script>
+</body>
+</html>

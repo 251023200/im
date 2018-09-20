@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>权限系统 - 用户详情</title>
+</head>
+<body>
+<div class="wrapper wrapper-content" style="height:100%;">
+	<!--基本信息-->
+	<div id="userInfo" class="container-fluid formBox round">
+		<div class="handleBoxs row">
+			<div class="title col-xs-5 col-md-5">
+				<span>基本信息</span>
+			</div>
+		</div>
+		
+		<form id="userInfoForm" role="form">
+			<div class="row">
+				<div class="form-group fieldGroup">
+					<div class="col-sm-2 text-right">
+						<label for="userNo" class="control-label labelwordtop">编号</label>
+					</div>
+					<div class="col-sm-4">
+						<input type="text" class="form-control" id="userNo" readonly />
+					</div>
+					<div class="col-sm-2 text-right">
+						<label for="userName" class="control-label labelwordtop">用户名</label>
+					</div>
+					<div class="col-sm-4">
+						<input type="text" class="form-control" id="userName" readonly />
+					</div>
+					<div style="clear: both;"></div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="form-group fieldGroup">
+					<div class="col-sm-2 text-right">
+						<label for="name" class="control-label labelwordtop">姓名</label>
+					</div>
+					<div class="col-sm-4">
+						<input type="text" class="form-control" id="name" readonly />
+					</div>
+					<div class="col-sm-2 text-right">
+						<label for="email" class="control-label labelwordtop">邮箱</label>
+					</div>
+					<div class="col-sm-4">
+						<input type="text" class="form-control" id="email"  readonly/>
+					</div>
+					<div style="clear: both;"></div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="form-group fieldGroup">
+					<div class="col-sm-2 text-right">
+						<label for="telephone" class="control-label labelwordtop">电话</label>
+					</div>
+					<div class="col-sm-4">
+						<input type="text" class="form-control" id="telephone"  readonly/>
+					</div>
+					<div class="col-sm-2 text-right">
+						<label for="mobileTelephone" class="control-label labelwordtop">手机</label>
+					</div>
+					<div class="col-sm-4">
+						<input type="text" class="form-control" id="mobileTelephone"  readonly/>
+					</div>
+				</div>
+			</div>
+		</form>
+	</div>
+	
+	<!--角色列表-->
+	<div class="container-fluid formBox round">
+		<div class="handleBoxs row">
+			<div class="title col-xs-5 col-md-5">
+				<span>角色列表</span>
+			</div>
+		</div>
+		
+		<div class="row">
+			<div class="col-xs-12">
+				<table id="role-table" class="display tablesorter" cellspacing="0" width="100%">
+			   		<thead>
+						<tr>
+					  		<th>编码</th>
+					  		<th>名称</th>
+					  		<th>描述</th>
+						</tr>
+					</thead>
+				</table>
+			</div>
+		</div>
+	</div>
+	
+	<!--权限列表-->
+	<div class="container-fluid formBox round">
+		<div class="handleBoxs row">
+			<div class="title col-xs-5 col-md-5">
+				<span>权限列表</span>
+			</div>
+		</div>
+		
+		<div class="row">
+			<div class="col-xs-12">
+				<table id="permission-table" class="display tablesorter" cellspacing="0" width="100%">
+			   		<thead>
+						<tr>
+					  		<th>编码</th>
+					  		<th>名称</th>
+					  		<th>描述</th>
+						</tr>
+					</thead>
+				</table>
+			</div>
+		</div>
+	</div>
+	
+	<!--操作列表-->
+	<div class="container-fluid formBox round">
+		<div class="handleBoxs row">
+			<div class="title col-xs-5 col-md-5">
+				<span>权限列表</span>
+			</div>
+		</div>
+		
+		<div class="row">
+			<div class="col-xs-12">
+				<table id="operation-table" class="display tablesorter" cellspacing="0" width="100%">
+			   		<thead>
+						<tr>
+					  		<th>编码</th>
+					  		<th>名称</th>
+							<th>应用</th>
+							<th>方法</th>
+							<th>url</th>
+					  		<th>描述</th>
+						</tr>
+					</thead>
+				</table>
+			</div>
+		</div>
+	</div>
+	
+	<!--菜单树-->
+	<div class="container-fluid formBox round">
+		<div class="handleBoxs row">
+			<div class="title col-xs-5 col-md-5">
+				<span>菜单</span>
+			</div>
+		</div>
+		
+		<div class="row">
+			<div class="col-xs-12">
+				<div id="menu-tree"></div>
+			</div>
+		</div>
+	</div>
+
+
+<!-- dialog end -->
+
+<script src="/modules/common/js/head.js"></script>
+<!--<script src="../../js/plugins/validate/bootstrapValidator.js"></script>-->
+<script src="../js/user-info.js?v=4"></script>
+</body>
+</html>

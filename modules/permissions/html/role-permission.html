@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>权限系统 - 配置角色权限</title>
+</head>
+<body>
+<div id="RoleEditPage" class="wrapper wrapper-content" style="height:100%;">
+	<!--基本信息-->
+	<div id="roleInfo" class="container-fluid formBox round">
+		<!--
+		<div class="handleBoxs row">
+			<div class="title col-xs-5 col-md-5">
+				<span>基本信息</span>
+			</div>
+		</div>
+		-->
+		<form id="roleInfoForm" role="form">
+			<div class="row">
+				<div class="form-group fieldGroup">
+					<div class="col-sm-1 text-right">
+						<label for="roleName" class="control-label labelwordtop">名称</label>
+					</div>
+					<div class="col-sm-2">
+						<input type="text" class="form-control" id="roleName"  readonly/>
+					</div>
+					<div class="col-sm-1 text-right">
+						<label for="roleCode" class="control-label labelwordtop">编码</label>
+					</div>
+					<div class="col-sm-2">
+						<input type="text" class="form-control" id="roleCode"  readonly/>
+					</div>
+					
+					<div class="col-sm-1 text-right">
+						<label for="roleDesc" class="control-label labelwordtop">描述</label>
+					</div>
+					<div class="col-sm-2">
+						<input type="text" class="form-control" id="roleDesc"  readonly/>
+					</div>
+					<div class="col-sm-1">
+						<a class="btn btn-primary" href="javascript:void(0);" onclick="addPermissions()">添加权限</a>
+					</div>
+				</div>
+			</div>
+			<!--
+			<div class="row">
+				<div class="form-group fieldGroup">
+					<div class="col-sm-2 text-right">
+						<label for="roleNo" class="control-label labelwordtop">编号</label>
+					</div>
+					<div class="col-sm-4">
+						<input type="text" class="form-control" id="roleNo"  readonly/>
+					</div>
+					<div class="col-sm-2 text-right">
+						<label for="roleName" class="control-label labelwordtop">用户名</label>
+					</div>
+					<div class="col-sm-4">
+						<input type="text" class="form-control" id="roleName"  readonly/>
+					</div>
+					<div style="clear: both;"></div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="form-group fieldGroup">
+					<div class="col-sm-2 text-right">
+						<label for="name" class="control-label labelwordtop">姓名</label>
+					</div>
+					<div class="col-sm-4">
+						<input type="text" class="form-control" id="name"  readonly/>
+					</div>
+				</div>
+			</div>
+			-->
+		</form>
+	</div>
+	
+	<!--角色列表-->
+	<div class="container-fluid formBox round">
+		<!--
+		<div class="handleBoxs row">
+			<div class="title col-xs-5 col-md-5">
+				<span>操作列表</span>
+			</div>
+			<div class="btn col-xs-7 col-md-7">
+				<span class="btn btn-sm btn-info" id="addRoleBtn" onclick="addRole()"><i class="glyphicon glyphicon-pencil"></i>添加</span>
+			</div>
+		</div>
+		-->
+		<div class="row">
+			<div class="col-xs-12">
+				<table id="permission-table" class="display tablesorter" cellspacing="0" width="100%">
+			   		<thead>
+						<tr>
+							<th>名称</th>
+					  		<th>编码</th>
+					  		<th>描述</th>
+							<th>操作</th>
+						</tr>
+					</thead>
+				</table>
+			</div>
+		</div>
+	</div>
+
+
+<!-- dialog end -->
+
+<script src="/modules/common/js/head.js"></script>
+<!--<script src="../../js/plugins/validate/bootstrapValidator.js"></script>-->
+<script src="../js/role-permission.js"></script>
+<script src="../js/role-add-permission-selector.js"></script>
+
+</body>
+</html>

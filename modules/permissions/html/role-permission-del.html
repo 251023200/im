@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>权限系统 - 角色管理</title>
+</head>
+<body>
+
+<div class="wrapper wrapper-content" style="height:100%;">
+	<div class="container-fluid formsearch round">
+		<!-- search -->
+		<form class="form-inline " style="display:block;">
+			<div>
+				<input id="roleName" type="text" class="form-control search" placeholder="请输入名称(模糊)">
+				<a class="btn btn-primary search" id="searchBtn"        onclick="searchRole()">查询</a>
+				<a class="btn btn-primary search" id="clearCondtion"    onclick="clearCondtion()">重置</a>
+				<a class="btn btn-primary search" id="addRole"    onclick="addRole()">添加</a>
+			</div>
+		</form>
+		<!-- end search -->
+	</div>
+	<div class="container-fluid formBox round">
+		<div class="row">
+			<div class="col-xs-12">
+				<table id="table" class="display tablesorter" cellspacing="0" width="100%">
+			   		<thead>
+						<tr>
+					  		<th>编码</th>
+					  		<th>名称</th>
+					  		<th>描述</th>
+					  		<th>操作</th>
+						</tr>
+					</thead>
+				</table>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+<!-- dialog -->
+<div class="modal fade" id="viewRoleModal" tabindex="-1" role="dialog" aria-hidden="true">
+	 <div class="modal-dialog"> 
+	    <div class="modal-content"> 
+		   <div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+				<h4 class="modal-title" id="dialogTitle">查看角色</h4>
+			</div>
+			<div class="modal-body">
+			   <form class="form-horizontal"  role="form" id="roleForm" style="padding-top:10px"  action="javascript:void(0)">
+		            <input type="text" id="id" style="display:none"/>
+		            <div class="form-group">
+			              <label class="col-sm-2 control-label" >名称</label>
+			              <div class="col-sm-4">
+			                   <input type="text" id="roleName" name="roleName"  placeholder="名称" class="form-control" readonly>
+				          </div>
+				          <label class="col-sm-2 control-label" >编码</label>
+			              <div class="col-sm-4">
+			                   <input type="text" id="roleCode" name="roleCode" placeholder="编号（英文）" class="form-control" readonly>
+				          </div>
+		            </div>
+		              <div class="form-group">
+			             <label class="col-sm-2 control-label" >描述</label>
+			              <div class="col-sm-4">
+			                   <input type="text" id="roleDesc" name="roleDesc" placeholder="描述" class="form-control" readonly>
+				          </div>
+		            </div>
+	          </form>
+			</div>
+		 </div> 
+     </div>
+</div>
+<!-- dialog end -->
+
+<!-- dialog -->
+<div class="modal fade" id="roleModal" tabindex="-1" role="dialog" aria-hidden="true">
+	 <div class="modal-dialog"> 
+	    <div class="modal-content"> 
+		   <div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+				<h4 class="modal-title" id="dialogTitle">修改角色</h4>
+			</div>
+			<div class="modal-body">
+			   <form class="form-horizontal"  role="form" id="roleForm" style="padding-top:10px"  action="javascript:void(0)">
+		            <input type="text" id="id" style="display:none"/>
+		            <div class="form-group">
+			              <label class="col-sm-2 control-label" >名称</label>
+			              <div class="col-sm-4">
+			                   <input type="text" id="roleName" name="roleName"  placeholder="名称" class="form-control">
+				          </div>
+				          <label class="col-sm-2 control-label" >编码</label>
+			              <div class="col-sm-4">
+			                   <input type="text" id="roleCode" name="roleCode" placeholder="编号（英文）" class="form-control">
+				          </div>
+		            </div>
+		              <div class="form-group">
+			             <label class="col-sm-2 control-label" >描述</label>
+			              <div class="col-sm-4">
+			                   <input type="text" id="roleDesc" name="roleDesc" placeholder="描述" class="form-control">
+				          </div>
+		            </div>
+	          </form>
+			</div>
+			<div class="modal-footer" id="op">
+				<button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+				<button type="button" class="btn btn-primary" onclick="saveRole()">确认</button>
+			</div>
+		 </div> 
+     </div>
+</div>
+
+<!-- dialog end -->
+
+<script src="/modules/common/js/head.js"></script>
+<script src="../js/role-list.js?v=36"></script>
+	<style>
+		.search{
+			margin-top:10px;
+			margin-bottom:10px;
+		}
+	</style>
+</body>
+</html>

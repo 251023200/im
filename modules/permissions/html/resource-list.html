@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>权限系统 - 资源管理</title>
+</head>
+<body>
+<div class="wrapper wrapper-content" style="height:100%;">
+	<div class="container-fluid formsearch round">
+		<!-- search -->
+		<form class="form-inline " style="display:block;">
+			<div>
+				<input id="resourceName" type="text" class="form-control search" placeholder="请输入资源名称(模糊)">
+				<input id="resourceCode" type="text" class="form-control search" placeholder="请输入编码(模糊)">
+				<input id="resourceType" type="text" class="form-control search" placeholder="请输入类型">
+				<a class="btn btn-primary search" id="searchBtn"        onclick="searchResource()">查询</a>
+				<a class="btn btn-primary search" id="clearCondtionBtn"    onclick="clearCondtion()">重置</a>
+				<a class="btn btn-primary search" id="addResourceBtn"    onclick="addResource()">添加</a>
+			</div>
+		</form>
+		<!-- end search -->
+	</div>
+	<div class="container-fluid formBox round">
+		<div class="row">
+			<div class="col-xs-12">
+				<table id="table" class="display tablesorter" cellspacing="0" width="100%">
+					<thead>
+						<tr>
+							<th>名称</th>
+							<th>编码</th>
+							<th>类型</th>
+							<th>资源定位</th>
+							<th>描述</th>
+							<th>操作</th>
+						</tr>
+					</thead>
+				</table>
+			</div>
+		</div>
+	</div>
+</div>
+
+<!-- dialog -->
+<div class="modal fade" id="resourceModal" tabindex="-1" role="dialog" aria-hidden="true">
+	 <div class="modal-dialog"> 
+	    <div class="modal-content"> 
+		   <div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+				<h4 class="modal-title" id="dialogTitle">添加资源</h4>
+			</div>
+			<div class="modal-body">
+			   <form class="form-horizontal"  role="form" id="roleForm" style="padding-top:10px"  action="javascript:void(0)">
+		            <input type="text" id="id" style="display:none"/>
+		            <div class="form-group">
+			              <label class="col-sm-2 control-label" >名称</label>
+			              <div class="col-sm-4">
+			                   <input type="text" id="resourceName" name="resourceName"  placeholder="名称" class="form-control">
+				          </div>
+				          <label class="col-sm-2 control-label" >编码</label>
+			              <div class="col-sm-4">
+			                   <input type="text" id="resourceCode" name="resourceCode" placeholder="编码" class="form-control">
+				          </div>
+		            </div>
+					<div class="form-group">
+			              <label class="col-sm-2 control-label" >类型</label>
+			              <div class="col-sm-4">
+			                   <input type="text" id="resourceType" name="resourceType"  placeholder="资源类型" class="form-control">
+				          </div>
+				          <label class="col-sm-2 control-label" >url</label>
+			              <div class="col-sm-4">
+			                   <input type="text" id="resourceUrl" name="resourceUrl" placeholder="资源定位符" class="form-control">
+				          </div>
+		            </div>
+		            <div class="form-group">
+			             <label class="col-sm-2 control-label" >描述</label>
+			              <div class="col-sm-4">
+			                   <input type="text" id="resourceDesc" name="resourceDesc" placeholder="描述" class="form-control">
+				          </div>
+		            </div>
+				</form>
+			</div>
+			<div class="modal-footer" id="op">
+				<button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+				<button type="button" class="btn btn-primary" onclick="saveResource()">确认</button>
+			</div>
+		 </div> 
+     </div>
+</div>
+<!-- dialog end -->
+
+<script src="/modules/common/js/head.js"></script>
+<!--<script src="../../js/plugins/validate/bootstrapValidator.js"></script>-->
+<script src="../js/resource-list.js?v=4"></script>
+</body>
+</html>

@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>权限系统 - 菜单管理</title>
+	<script src="/modules/common/js/head.js"></script>
+</head>
+<body>
+	
+<div class="wrapper wrapper-content" style="height:100%;">
+	<!--
+	<div class="row" style="margin-bottom:10px">
+		<div class="col-xs-12">
+			<a class="like btn btn-small btn-primary" href="#" onclick="addMenu()">添加</a>
+			<a class="like btn btn-small btn-primary" href="#" onclick="editMenu()">编辑</a>
+			<a class="remove btn btn-small btn-danger" href="#" onclick="deleteMenu()">删除</a>
+		</div>
+	</div>
+	-->
+	<div class="row">
+		
+		<div class="col-xs-12 round menu">
+			<!--
+			<div class="row" style="margin-bottom:10px">
+				<div class="col-xs-12">
+					<a class="like btn btn-small btn-primary" href="#" onclick="addMenu()">添加</a>
+					<a class="like btn btn-small btn-primary" href="#" onclick="editMenu()">编辑</a>
+					<a class="remove btn btn-small btn-danger" href="#" onclick="deleteMenu()">删除</a>
+				</div>
+			</div>
+			-->
+			<div class="row">
+				<div class="col-xs-12">
+					<div id="tree">
+						<!--
+						<a href="#" class="btn" onclick="addMenu0()">添加</a>
+						<ol class="dd-list">  
+							<li id="id_3" class="dd-item dd-nodrag" data-id="3">  
+								<div class="dd-handle">
+									<span>菜单名3<span>
+									<span class="pull-right">
+										<a href="#" onclick="addMenu0('id_3')"><i class="fa fa-plus fa-lg add-op-icon"></i></a>&nbsp;
+										<a href="#" onclick="editMenu0('id_3')"><i class="fa fa-edit fa-lg edit-op-icon"></i></a>&nbsp;
+										<a href="#" onclick="deleteMenu0('id_3')"><i class="fa fa-trash-o fa-lg del-op-icon"></i></a>&nbsp;
+									</span>
+								</div>
+								<ol class="dd-list">  
+									<li id="id_4" class="dd-item dd-nodrag" data-id="4">  
+										<div class="dd-handle">
+											<span>菜单名2<span>
+											<span class="pull-right">
+												<a href="#" onclick="addMenu0('id_4')"><i class="fa fa-plus fa-lg add-op-icon"></i></a>&nbsp;
+												<a href="#" onclick="editMenu0('id_4')"><i class="fa fa-edit fa-lg edit-op-icon"></i></a>&nbsp;
+												<a href="#" onclick="deleteMenu0('id_4')"><i class="fa fa-trash-o fa-lg del-op-icon"></i></a>&nbsp;
+											</span>
+										</div>  
+										<ol class="dd-list">  
+											<li id="id_6" class="dd-item dd-nodrag" data-id="6">  
+												<div class="dd-handle">
+													<span>菜单名6<span>
+													<span class="pull-right">
+														<a href="#" onclick="addMenu0('id_6')"><i class="fa fa-plus fa-lg add-op-icon"></i></a>&nbsp;
+														<a href="#" onclick="editMenu0('id_6')"><i class="fa fa-edit fa-lg edit-op-icon"></i></a>&nbsp;
+														<a href="#" onclick="deleteMenu0('id_6')"><i class="fa fa-trash-o fa-lg del-op-icon"></i></a>&nbsp;
+													</span>
+												</div>  
+											</li>  
+										</ol>  
+									</li>  
+									<li id="id_5" class="dd-item dd-nodrag" data-id="5">  
+										<div class="dd-handle">
+											<span>菜单名5<span>
+											<span class="pull-right">
+												<a href="#" onclick="addMenu0('id_5')"><i class="fa fa-plus fa-lg add-op-icon"></i></a>&nbsp;
+												<a href="#" onclick="editMenu0('id_5')"><i class="fa fa-edit fa-lg edit-op-icon"></i></a>&nbsp;
+												<a href="#" onclick="deleteMenu0('id_5')"><i class="fa fa-trash-o fa-lg del-op-icon"></i></a>&nbsp;
+											</span>
+										</div>  
+									</li>  
+								</ol>  
+							</li>  
+						</ol>  
+						-->
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+<!-- dialog -->
+<div class="modal fade" id="add-menu-modal" tabindex="-1" role="dialog" aria-hidden="true">
+	 <div class="modal-dialog"> 
+	    <div class="modal-content"> 
+		   <div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+				<h4 class="modal-title" id="dialogTitle">添加菜单</h4>
+			</div>
+			<div class="modal-body">
+			   <form class="form-horizontal"  role="form" id="roleForm" style="padding-top:10px"  action="javascript:void(0)">
+		            <input type="hidden" id="add-menu-id" name="menu-id"/>
+					<input type="hidden" id="add-menu-parentId" name="menu-parentId">
+		            <div class="form-group">
+			              <label class="col-sm-2 control-label" >名称</label>
+			              <div class="col-sm-4">
+			                   <input type="text" id="add-menu-name" name="menu-name"  placeholder="名称" class="form-control">
+				          </div>
+				          <label class="col-sm-2 control-label" >路径</label>
+			              <div class="col-sm-4">
+			                   <input type="text" id="add-menu-url" name="menu-url" placeholder="路径" class="form-control">
+				          </div>
+		            </div>
+					<div class="form-group">
+			              <label class="col-sm-2 control-label" >图标</label>
+			              <div class="col-sm-4">
+			                   <input type="text" id="add-menu-icon" name="menu-icon"  placeholder="图标" class="form-control">
+				          </div>
+				          <label class="col-sm-2 control-label" >序号</label>
+			              <div class="col-sm-4">
+			                   <input type="number" id="add-menu-seq" name="menu-seq" placeholder="序号" class="form-control">
+				          </div>
+		            </div>
+		            <div class="form-group">
+						<label class="col-sm-2 control-label" >状态</label>
+						<div class="col-sm-4">
+							<input type="checkbox" id="add-menu-active" name="menu-active" class="form-control">
+						</div>
+						<label class="col-sm-2 control-label" >描述</label>
+						<div class="col-sm-4">
+							<input type="text" id="add-menu-remark" name="menu-remark" placeholder="描述" class="form-control">
+						</div>
+		            </div>
+				</form>
+			</div>
+			<div class="modal-footer" id="op">
+				<button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+				<button type="button" class="btn btn-primary" onclick="saveMenu()">确认</button>
+			</div>
+		 </div> 
+     </div>
+</div>
+<!-- dialog end -->
+
+
+<!--
+<script src="/js/plugins/treeview/bootstrap-treeview.custom.js"></script>
+-->
+
+<script src="/js/plugins/nestable/jquery.nestable.js"></script>
+
+<!--<script src="../../js/plugins/validate/bootstrapValidator.js"></script>-->
+<script src="../js/menu-list-nestable.js?v=4"></script>
+
+<style>
+	.add-op-icon{
+		position: absolute;
+		right: 100px;
+	}
+	.edit-op-icon{
+		position: absolute;
+		right: 65px;
+	}
+	.del-op-icon{
+		position: absolute;
+		right: 35px;
+	}
+</style>
+
+</html>

@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>权限系统 - 操作管理</title>
+</head>
+<body>
+
+<div class="wrapper wrapper-content" style="height:100%;">
+	 <div class="container-fluid formsearch round">
+			<!-- search -->
+			<form class="form-inline " style="display:block;">
+				<div>
+					<!--<input id="appName" type="text" class="form-control search" placeholder="请输入名称(模糊)"> -->
+				    <input id="operationName" type="text" class="form-control search" placeholder="请输入名称(模糊)">
+					<input id="operationCode" type="text" class="form-control search" placeholder="请输入编码(模糊)">
+					<a class="btn btn-primary search" id="searchBtn"        onclick="searchOperation()">查询</a>
+					<a class="btn btn-primary search" id="clearCondtion"    onclick="clearCondtion()">重置</a>
+					<a class="btn btn-primary search" id="addOperation"    onclick="addOperation()">添加</a>
+				</div>
+			</form>
+			<!-- end search -->
+		</div>
+		<div class="container-fluid formBox round">
+			<div class="row">
+				<div class="col-xs-12">
+			<table id="table" class="display tablesorter" cellspacing="0" width="100%">
+			   <thead>
+					<tr>
+						<th>应用名称</th>
+						<th>应用编码</th>
+						<th>操作名称</th>
+						<th>操作编码</th>
+						<th>方法</th>
+						<th>接口</th>
+						<th>描述</th>
+						<th>操作</th>
+					</tr>
+				</thead>
+			</table>
+		</div>
+		</div>
+		</div>
+</div>
+
+<!-- dialog -->
+<div class="modal fade" id="view-operation" tabindex="-1" role="dialog" aria-hidden="true">
+	 <div class="modal-dialog"> 
+	    <div class="modal-content"> 
+		   <div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+				<h4 class="modal-title" id="dialogTitle">新增操作</h4>
+			</div>
+			<div class="modal-body">
+			   <form class="form-horizontal"  role="form" id="operationForm" style="padding-top:10px"  action="javascript:void(0)">
+		            <input type="text" id="id" style="display:none"/>
+					<div class="form-group">
+			              <label class="col-sm-2 control-label" >应用名称</label>
+			              <div class="col-sm-4">
+			                   <input type="text" id="appName" name="appName"  placeholder="名称" class="form-control" readonly>
+				          </div>
+				          <label class="col-sm-2 control-label" >应用编码</label>
+			              <div class="col-sm-4">
+			                   <input type="text" id="appCode" name="appCode" placeholder="编号（英文）" class="form-control" readonly>
+				          </div>
+		            </div>
+		            <div class="form-group">
+			              <label class="col-sm-2 control-label" >名称</label>
+			              <div class="col-sm-4">
+			                   <input type="text" id="operationName" name="operationName"  placeholder="名称" class="form-control" readonly>
+				          </div>
+				          <label class="col-sm-2 control-label" >编码</label>
+			              <div class="col-sm-4">
+			                   <input type="text" id="operationCode" name="operationCode" placeholder="编号（英文）" class="form-control" readonly>
+				          </div>
+		            </div>
+					<div class="form-group">
+			            <label class="col-sm-2 control-label" >操作</label>
+						<div class="col-sm-4">
+							<input type="select" id="operationMethod" name="operationMethod"  placeholder="HTTP方法" class="form-control" readonly>
+						</div>
+						<label class="col-sm-2 control-label" >接口</label>
+						<div class="col-sm-4">
+							<input type="text" id="operationUrl" name="operationUrl" placeholder="api接口" class="form-control" readonly>
+						</div>
+		            </div>
+		            <div class="form-group">
+			             <label class="col-sm-2 control-label" >描述</label>
+			              <div class="col-sm-10">
+			                   <input type="text" id="operationDesc" name="operationDesc" placeholder="描述" class="form-control" readonly>
+				          </div>
+		            </div>
+	          </form>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-primary"  data-dismiss="modal">确认</button>
+			</div>
+		 </div> 
+     </div>
+</div>
+<!-- dialog end -->
+
+<!-- dialog -->
+<div class="modal fade" id="upsert-operation" tabindex="-1" role="dialog" aria-hidden="true" style="width:80%">
+	 <div class="modal-dialog"> 
+	    <div class="modal-content"> 
+		   <div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+				<h4 class="modal-title" id="dialogTitle">新增操作</h4>
+			</div>
+			<div class="modal-body">
+			   <form class="form-horizontal"  role="form" id="operationForm" style="padding-top:10px"  action="javascript:void(0)">
+		            <input type="text" id="upsert-operation-id" style="display:none"/>
+					
+					<div id="application" class="form-group">
+						<input type="text" id="upsert-app-id" style="display:none"/>
+			            <label class="col-sm-2 control-label" >应用名称</label>
+			            <div class="col-sm-4">
+							<div class="input-group">
+								<input type="text" id="upsert-app-name" name="appName"  placeholder="名称" class="form-control" readonly>
+								<span class="input-group-btn">
+									<button class="btn btn-default" type="button" onclick="chooseApp()">选择</button>
+								</span>
+							</div>
+						</div>
+						<label class="col-sm-2 control-label" >应用编码</label>
+						<div class="col-sm-4">
+							<input type="text" id="upsert-app-code" name="appCode" placeholder="编号（英文）" class="form-control" readonly>
+						</div>
+		            </div>
+		            <div class="form-group">
+			              <label class="col-sm-2 control-label" >名称</label>
+			              <div class="col-sm-4">
+			                   <input type="text" id="upsert-operation-name" name="operationName"  placeholder="名称" class="form-control">
+				          </div>
+				          <label class="col-sm-2 control-label" >编码</label>
+			              <div class="col-sm-4">
+			                   <input type="text" id="upsert-operation-code" name="operationCode" placeholder="编号（英文）" class="form-control">
+				          </div>
+		            </div>
+					<div class="form-group">
+			            <label class="col-sm-2 control-label" >方法</label>
+						<div class="col-sm-4">
+							<!--<input type="select" id="operationMethod" name="operationMethod"  placeholder="HTTP方法" class="form-control" readonly>-->
+							<select class="form-control" id="upsert-operation-method" name="operationMethod">
+								<option>GET</option>
+								<option>POST</option>
+								<option>PUT</option>
+								<option>PATCH</option>
+								<option>DELETE</option>
+								<option>HEAD</option>
+								<option>OPTION</option>
+							</select>
+						</div>
+						<label class="col-sm-2 control-label" >接口</label>
+						<div class="col-sm-4">
+							<input type="text" id="upsert-operation-url" name="operationUrl" placeholder="api接口" class="form-control">
+						</div>
+		            </div>
+		            <div class="form-group">
+			            <label class="col-sm-2 control-label" >描述</label>
+						<div class="col-sm-10">
+			                <input type="text" id="upsert-operation-desc" name="operationDesc" placeholder="描述" class="form-control">
+				        </div>
+		            </div>
+	          </form>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-default"  data-dismiss="modal">取消</button>
+				<button type="button" class="btn btn-primary"  onclick="saveOperation()">确认</button>
+			</div>
+		 </div> 
+     </div>
+</div>
+
+<!-- dialog end -->
+
+<script src="/modules/common/js/head.js"></script>
+<script src="../js/operation-list.js?v=1"></script>
+<script src="../js/application-selector.js?v=1"></script>
+	<style>
+		.search{
+			margin-top:10px;
+			margin-bottom:10px;
+		}
+	</style>
+</body>
+</html>

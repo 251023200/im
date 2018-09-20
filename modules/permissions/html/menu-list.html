@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>权限系统 - 菜单管理</title>
+	<script src="/modules/common/js/head.js"></script>
+</head>
+<body>
+	
+<div class="wrapper wrapper-content" style="height:100%;">
+	<!--
+	<div class="row" style="margin-bottom:10px">
+		<div class="col-xs-12">
+			<a class="like btn btn-small btn-primary" href="#" onclick="addMenu()">添加</a>
+			<a class="like btn btn-small btn-primary" href="#" onclick="editMenu()">编辑</a>
+			<a class="remove btn btn-small btn-danger" href="#" onclick="deleteMenu()">删除</a>
+		</div>
+	</div>
+	-->
+	<div class="row">
+		
+		<div class="col-xs-12 col-sm-5 round menu">
+			<div class="row" style="margin-bottom:10px">
+				<div class="col-xs-12">
+					<a class="like btn btn-small btn-primary" href="#" onclick="addMenu()">添加</a>
+					<a class="like btn btn-small btn-primary" href="#" onclick="editMenu()">编辑</a>
+					<a class="remove btn btn-small btn-danger" href="#" onclick="deleteMenu()">删除</a>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-xs-12">
+					<div id="tree">
+						<!--
+						<ol class="dd-list">  
+							<li class="dd-item" data-id="1">  
+								<div class="dd-handle">Item 1 
+									<a href="btn btn-small">添加</a>
+								</div> 
+							</li>  
+							<li class="dd-item" data-id="2">  
+								<div class="dd-handle">Item 2 
+									<a href="btn btn-small">添加</a>
+								</div> 
+							</li>  
+							<li class="dd-item" data-id="3">  
+								<div class="dd-handle">Item 3
+									<a href="btn btn-small">添加</a>
+								</div>
+								<ol class="dd-list">  
+									<li class="dd-item" data-id="4">  
+										<div class="dd-handle">Item 4
+											<a href="btn btn-small">添加</a>
+										</div>  
+									</li>  
+									<li class="dd-item" data-id="5">  
+										<div class="dd-handle">Item 5
+											<a href="btn btn-small">添加</a>
+										</div>  
+									</li>  
+								</ol>  
+							</li>  
+						</ol>  
+						-->
+					</div>
+				</div>
+			</div>
+		</div>
+		
+		<!--
+		<div class="col-xs-12 col-sm-5 listBox round menu">
+			<div class="panel panel-info">
+				<div class="panel-heading">
+					<a class="like btn btn-small btn-primary" href="#" onclick="addMenu()">添加</a>
+					<a class="like btn btn-small btn-primary" href="#" onclick="editMenu()">编辑</a>
+					<a class="remove btn btn-small btn-danger" href="#" onclick="deleteMenu()">删除</a>
+				</div>
+				<div class="panel-body">
+					<div id="tree"></div>
+				</div>
+			</div>
+		</div>
+		-->
+		
+		<div class="col-xs-12 col-sm-7">
+			<div class="panel panel-info">
+				<div class="panel-heading">
+					<h3 class="panel-title">菜单信息</h3>
+				</div>
+				<div class="panel-body">
+					<div class="form-group formBase row">
+						<label class="col-xs-2 col-sm-2 control-label" >名称</label>
+						<div class="col-xs-10 col-sm-10 round" id="menu-name" name="menu-name"></div>
+					</div>
+					<div class="form-group formBase row">
+						<label class="col-xs-2 col-sm-2 control-label" >路径</label>
+						<div class="col-xs-10 col-sm-10 round" id="menu-url" name="menu-url"></div>
+					</div>
+					<div class="form-group formBase row">
+						<label class="col-xs-2 col-sm-2 control-label">图标</label>
+						<div class="col-xs-10 col-sm-10 round" id="menu-icon" name="menu-icon"></div>
+					</div>
+					<div class="form-group formBase row">
+						<label class="col-xs-2 col-sm-2 control-label">序号</label>
+						<div class="col-xs-10 col-sm-10 round" id="menu-seq" name="menu-seq"></div>
+					</div>
+					<div class="form-group formBase row">
+						<label class="col-xs-2 col-sm-2 control-label" >状态</label>
+						<div class="col-xs-10 col-sm-10 round" id="menu-active" name="menu-active"></div>
+					</div>
+					<div class="form-group formBase row">
+						<label class="col-xs-2 col-sm-2 control-label" >备注</label>
+						<div class="col-xs-10 col-sm-10 round" id="menu-remark" name="menu-remark"></div>
+					</div>
+				</div>
+			</div>
+			
+			<!--
+			<div id="menu-info" class="listBox round menu-info">
+				<div class="form-group formBase row">
+					<label class="col-sm-3 control-label" >名称</label>
+		            <div class="col-sm-6 round" id="menu-name" name="menu-name"></div>
+	            </div>
+				<div class="form-group formBase row">
+					<label class="col-sm-3 control-label" >路径</label>
+		            <div class="col-sm-6 round" id="menu-url" name="menu-url"></div>
+	            </div>
+				<div class="form-group formBase row">
+					<label class="col-sm-3 control-label">图标</label>
+		           	<div class="col-sm-6 round" id="menu-icon" name="menu-icon"></div>
+	            </div>
+				<div class="form-group formBase row">
+					<label class="col-sm-3 control-label">序号</label>
+					<div class="col-sm-6 round" id="menu-seq" name="menu-seq"></div>
+	            </div>
+				<div class="form-group formBase row">
+					<label class="col-sm-3 control-label" >状态</label>
+		            <div class="col-sm-6 round" id="menu-active" name="menu-active"></div>
+	            </div>
+				<div class="form-group formBase row">
+					<label class="col-sm-3 control-label" >备注</label>
+		            <div class="col-sm-6 round" id="menu-remark" name="menu-remark"></div>
+	            </div>
+			</div>
+			-->
+		</div>
+	</div>
+</div>
+
+<!-- dialog -->
+<div class="modal fade" id="add-menu-modal" tabindex="-1" role="dialog" aria-hidden="true">
+	 <div class="modal-dialog"> 
+	    <div class="modal-content"> 
+		   <div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+				<h4 class="modal-title" id="dialogTitle">添加菜单</h4>
+			</div>
+			<div class="modal-body">
+			   <form class="form-horizontal"  role="form" id="roleForm" style="padding-top:10px"  action="javascript:void(0)">
+		            <input type="hidden" id="add-menu-id" name="menu-id"/>
+					<input type="hidden" id="add-menu-parentId" name="menu-parentId">
+		            <div class="form-group">
+			              <label class="col-sm-2 control-label" >名称</label>
+			              <div class="col-sm-4">
+			                   <input type="text" id="add-menu-name" name="menu-name"  placeholder="名称" class="form-control">
+				          </div>
+				          <label class="col-sm-2 control-label" >路径</label>
+			              <div class="col-sm-4">
+			                   <input type="text" id="add-menu-url" name="menu-url" placeholder="路径" class="form-control">
+				          </div>
+		            </div>
+					<div class="form-group">
+			              <label class="col-sm-2 control-label" >图标</label>
+			              <div class="col-sm-4">
+			                   <input type="text" id="add-menu-icon" name="menu-icon"  placeholder="图标" class="form-control">
+				          </div>
+				          <label class="col-sm-2 control-label" >序号</label>
+			              <div class="col-sm-4">
+			                   <input type="number" id="add-menu-seq" name="menu-seq" placeholder="序号" class="form-control">
+				          </div>
+		            </div>
+		            <div class="form-group">
+						<label class="col-sm-2 control-label" >状态</label>
+						<div class="col-sm-4">
+							<input type="checkbox" id="add-menu-active" name="menu-active" class="form-control">
+						</div>
+						<label class="col-sm-2 control-label" >描述</label>
+						<div class="col-sm-4">
+							<input type="text" id="add-menu-remark" name="menu-remark" placeholder="描述" class="form-control">
+						</div>
+		            </div>
+				</form>
+			</div>
+			<div class="modal-footer" id="op">
+				<button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+				<button type="button" class="btn btn-primary" onclick="saveMenu()">确认</button>
+			</div>
+		 </div> 
+     </div>
+</div>
+<!-- dialog end -->
+
+<!-- dialog -->
+<div class="modal fade" id="edit-menu-modal" tabindex="-1" role="dialog" aria-hidden="true">
+	 <div class="modal-dialog"> 
+	    <div class="modal-content"> 
+		   <div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+				<h4 class="modal-title" id="dialogTitle">添加菜单</h4>
+			</div>
+			<div class="modal-body">
+			   <form class="form-horizontal"  role="form" id="roleForm" style="padding-top:10px"  action="javascript:void(0)">
+		            <input type="hidden" id="edit-menu-id" name="menu-id"/>
+					<input type="hidden" id="edit-menu-parentId" name="menu-parentId">
+		            <div class="form-group">
+			              <label class="col-sm-2 control-label" >名称</label>
+			              <div class="col-sm-4">
+			                   <input type="text" id="edit-menu-name" name="menu-name"  placeholder="名称" class="form-control">
+				          </div>
+				          <label class="col-sm-2 control-label" >路径</label>
+			              <div class="col-sm-4">
+			                   <input type="text" id="edit-menu-url" name="menu-url" placeholder="路径" class="form-control">
+				          </div>
+		            </div>
+					<div class="form-group">
+			              <label class="col-sm-2 control-label" >图标</label>
+			              <div class="col-sm-4">
+			                   <input type="text" id="edit-menu-icon" name="menu-icon"  placeholder="图标" class="form-control">
+				          </div>
+				          <label class="col-sm-2 control-label" >序号</label>
+			              <div class="col-sm-4">
+			                   <input type="number" id="edit-menu-seq" name="menu-seq" placeholder="序号" class="form-control">
+				          </div>
+		            </div>
+		            <div class="form-group">
+						<label class="col-sm-2 control-label" >状态</label>
+						<div class="col-sm-4">
+							<input type="checkbox" id="edit-menu-active" name="menu-active" class="form-control">
+						</div>
+						<label class="col-sm-2 control-label" >描述</label>
+						<div class="col-sm-4">
+							<input type="text" id="edit-menu-remark" name="menu-remark" placeholder="描述" class="form-control">
+						</div>
+		            </div>
+				</form>
+			</div>
+			<div class="modal-footer" id="op">
+				<button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+				<button type="button" class="btn btn-primary" onclick="saveMenu()">确认</button>
+			</div>
+		 </div> 
+     </div>
+</div>
+<!-- dialog end -->
+
+
+<script src="/js/plugins/treeview/bootstrap-treeview.custom.js"></script>
+
+<!--
+<script src="/js/plugins/nestable/jquery.nestable.js"></script>
+-->
+<!--<script src="../../js/plugins/validate/bootstrapValidator.js"></script>-->
+<script src="../js/menu-list.js?v=4"></script>
+</body>
+</html>

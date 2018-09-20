@@ -1,0 +1,58 @@
+<div id="application-selector" class="modal fade list-choose" tabindex="-1" role="dialog" aria-hidden="true">
+	<div class="modal-dialog" style="width:80%;">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+				<h4 class="modal-title" style="float: left;">选择应用</h4>
+			</div>
+			<div class="modal-body">
+				<div class="container-fluid formsearch round">
+					<div class="row">
+					<!-- search -->
+					<form class="form-inline " style="display:block;">
+						<div>
+							<input id="applicationName" type="text" class="form-control search" placeholder="请输入应用名(模糊)">
+							<a class="btn btn-primary search" id="searchBtn">查询</a>
+							<a class="btn btn-primary search" id="clearCondtion">重置</a>
+						</div>
+					</form>
+					<!-- end search -->
+					</div>
+				</div>
+				<!--
+				<form role="form" action="javascript:void(0)">
+					<div style="padding: 0 15px">
+						<input type="text" name="roleName" class="form-control" placeholder="请输入应用名称"
+								style="width:150px;display:inline;margin:0 10px 0 10px" />
+						<input type="text" name="roleCode" class="form-control" placeholder="请输入应用代码"
+								style="width:150px;display:inline;margin:0 10px 0 10px" />
+						<button type="button" class="btn btn-primary btn-sm search">查询</button>
+						<button type="reset" class="btn btn-primary btn-sm">重置</button>
+					</div>
+				</form>
+				-->
+				<div class="container-fluid formBox round">
+					<div class="row">
+						<table id="application-selector-table" class="table table-hover">
+							<thead>
+								<tr>
+									<!--<th>选择</th>-->
+									<th width="15%">
+										<!--<input id="checkAll" class="checkAll" type="checkbox" value="">-->
+									</th>
+									<th>名称</th>
+									<th>编码</th>
+									<th>描述</th>
+								</tr>
+							</thead>
+						</table>
+					</div>
+				</div>	
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+				<button type="button" class="btn btn-primary submit">提交</button>
+			</div>
+		</div>
+	</div>
+</div>

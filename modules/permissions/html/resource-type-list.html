@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>权限系统 - 资源类别管理</title>
+	<script src="/modules/common/js/head.js"></script>
+</head>
+<body>
+	
+<div class="wrapper wrapper-content" style="height:100%;">
+	<!--
+	<div class="row" style="margin-bottom:10px">
+		<div class="col-xs-12">
+			<a class="like btn btn-small btn-primary" href="#" onclick="addMenu()">添加</a>
+			<a class="like btn btn-small btn-primary" href="#" onclick="editMenu()">编辑</a>
+			<a class="remove btn btn-small btn-danger" href="#" onclick="deleteMenu()">删除</a>
+		</div>
+	</div>
+	-->
+	<div class="row">
+		
+		<div class="col-xs-12 col-sm-5 round resource-type">
+			<div class="row" style="margin-bottom:10px">
+				<div class="col-xs-12">
+					<a class="like btn btn-small btn-primary" href="#" onclick="addResourceType()">添加</a>
+					<a class="like btn btn-small btn-primary" href="#" onclick="editResourceType()">编辑</a>
+					<a class="remove btn btn-small btn-danger" href="#" onclick="deleteResourceType()">删除</a>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-xs-12">
+					<div id="tree">
+						<!--
+						<ol class="dd-list">  
+							<li class="dd-item" data-id="1">  
+								<div class="dd-handle">Item 1 
+									<a href="btn btn-small">添加</a>
+								</div> 
+							</li>  
+							<li class="dd-item" data-id="2">  
+								<div class="dd-handle">Item 2 
+									<a href="btn btn-small">添加</a>
+								</div> 
+							</li>  
+							<li class="dd-item" data-id="3">  
+								<div class="dd-handle">Item 3
+									<a href="btn btn-small">添加</a>
+								</div>
+								<ol class="dd-list">  
+									<li class="dd-item" data-id="4">  
+										<div class="dd-handle">Item 4
+											<a href="btn btn-small">添加</a>
+										</div>  
+									</li>  
+									<li class="dd-item" data-id="5">  
+										<div class="dd-handle">Item 5
+											<a href="btn btn-small">添加</a>
+										</div>  
+									</li>  
+								</ol>  
+							</li>  
+						</ol>  
+						-->
+					</div>
+				</div>
+			</div>
+		</div>
+		
+		<!--
+		<div class="col-xs-12 col-sm-5 listBox round resource-type">
+			<div class="panel panel-info">
+				<div class="panel-heading">
+					<a class="like btn btn-small btn-primary" href="#" onclick="addMenu()">添加</a>
+					<a class="like btn btn-small btn-primary" href="#" onclick="editMenu()">编辑</a>
+					<a class="remove btn btn-small btn-danger" href="#" onclick="deleteMenu()">删除</a>
+				</div>
+				<div class="panel-body">
+					<div id="tree"></div>
+				</div>
+			</div>
+		</div>
+		-->
+		
+		<div class="col-xs-12 col-sm-7">
+			<div class="panel panel-info">
+				<div class="panel-heading">
+					<h3 class="panel-title">资源类别信息</h3>
+				</div>
+				<div class="panel-body">
+					<div class="form-group formBase row">
+						<label class="col-xs-2 col-sm-2 control-label" >名称</label>
+						<div class="col-xs-10 col-sm-10 round" id="resource-type-name" name="resource-type-name"></div>
+					</div>
+					<div class="form-group formBase row">
+						<label class="col-xs-2 col-sm-2 control-label" >编码</label>
+						<div class="col-xs-10 col-sm-10 round" id="resource-type-code" name="resource-type-code"></div>
+					</div>
+					<div class="form-group formBase row">
+						<label class="col-xs-2 col-sm-2 control-label">图标</label>
+						<div class="col-xs-10 col-sm-10 round" id="resource-type-icon" name="resource-type-icon"></div>
+					</div>
+					<div class="form-group formBase row">
+						<label class="col-xs-2 col-sm-2 control-label">序号</label>
+						<div class="col-xs-10 col-sm-10 round" id="resource-type-seq" name="resource-type-seq"></div>
+					</div>
+					<div class="form-group formBase row">
+						<label class="col-xs-2 col-sm-2 control-label" >状态</label>
+						<div class="col-xs-10 col-sm-10 round" id="resource-type-active" name="resource-type-active"></div>
+					</div>
+					<div class="form-group formBase row">
+						<label class="col-xs-2 col-sm-2 control-label" >备注</label>
+						<div class="col-xs-10 col-sm-10 round" id="resource-type-remark" name="resource-type-remark"></div>
+					</div>
+				</div>
+			</div>
+			
+			<!--
+			<div id="resource-type-info" class="listBox round resource-type-info">
+				<div class="form-group formBase row">
+					<label class="col-sm-3 control-label" >名称</label>
+		            <div class="col-sm-6 round" id="resource-type-name" name="resource-type-name"></div>
+	            </div>
+				<div class="form-group formBase row">
+					<label class="col-sm-3 control-label" >编码</label>
+		            <div class="col-sm-6 round" id="resource-type-url" name="resource-type-url"></div>
+	            </div>
+				<div class="form-group formBase row">
+					<label class="col-sm-3 control-label">图标</label>
+		           	<div class="col-sm-6 round" id="resource-type-icon" name="resource-type-icon"></div>
+	            </div>
+				<div class="form-group formBase row">
+					<label class="col-sm-3 control-label">序号</label>
+					<div class="col-sm-6 round" id="resource-type-seq" name="resource-type-seq"></div>
+	            </div>
+				<div class="form-group formBase row">
+					<label class="col-sm-3 control-label" >状态</label>
+		            <div class="col-sm-6 round" id="resource-type-active" name="resource-type-active"></div>
+	            </div>
+				<div class="form-group formBase row">
+					<label class="col-sm-3 control-label" >备注</label>
+		            <div class="col-sm-6 round" id="resource-type-remark" name="resource-type-remark"></div>
+	            </div>
+			</div>
+			-->
+		</div>
+	</div>
+</div>
+
+<!-- dialog -->
+<div class="modal fade" id="add-resource-type-modal" tabindex="-1" role="dialog" aria-hidden="true">
+	 <div class="modal-dialog"> 
+	    <div class="modal-content"> 
+		   <div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+				<h4 class="modal-title" id="dialogTitle">添加资源</h4>
+			</div>
+			<div class="modal-body">
+			   <form class="form-horizontal"  role="form" id="roleForm" style="padding-top:10px"  action="javascript:void(0)">
+		            <input type="hidden" id="add-resource-type-id" name="resource-type-id"/>
+					<input type="hidden" id="add-resource-type-parentId" name="resource-type-parentId">
+		            <div class="form-group">
+			              <label class="col-sm-2 control-label" >名称</label>
+			              <div class="col-sm-4">
+			                   <input type="text" id="add-resource-type-name" name="resource-type-name"  placeholder="名称" class="form-control">
+				          </div>
+				          <label class="col-sm-2 control-label" >编码</label>
+			              <div class="col-sm-4">
+			                   <input type="text" id="add-resource-type-code" name="resource-type-code" placeholder="编码" class="form-control">
+				          </div>
+		            </div>
+					<div class="form-group">
+			              <label class="col-sm-2 control-label" >图标</label>
+			              <div class="col-sm-4">
+			                   <input type="text" id="add-resource-type-icon" name="resource-type-icon"  placeholder="图标" class="form-control">
+				          </div>
+				          <label class="col-sm-2 control-label" >序号</label>
+			              <div class="col-sm-4">
+			                   <input type="number" id="add-resource-type-seq" name="resource-type-seq" placeholder="序号" class="form-control">
+				          </div>
+		            </div>
+		            <div class="form-group">
+						<label class="col-sm-2 control-label" >状态</label>
+						<div class="col-sm-4">
+							<input type="checkbox" id="add-resource-type-active" name="resource-type-active" class="form-control">
+						</div>
+						<label class="col-sm-2 control-label" >描述</label>
+						<div class="col-sm-4">
+							<input type="text" id="add-resource-type-remark" name="resource-type-remark" placeholder="描述" class="form-control">
+						</div>
+		            </div>
+				</form>
+			</div>
+			<div class="modal-footer" id="op">
+				<button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+				<button type="button" class="btn btn-primary" onclick="saveResourceType()">确认</button>
+			</div>
+		 </div> 
+     </div>
+</div>
+<!-- dialog end -->
+
+<!-- dialog -->
+<div class="modal fade" id="edit-resource-type-modal" tabindex="-1" role="dialog" aria-hidden="true">
+	 <div class="modal-dialog"> 
+	    <div class="modal-content"> 
+		   <div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+				<h4 class="modal-title" id="dialogTitle">添加资源类别</h4>
+			</div>
+			<div class="modal-body">
+			   <form class="form-horizontal"  role="form" id="roleForm" style="padding-top:10px"  action="javascript:void(0)">
+		            <input type="hidden" id="edit-resource-type-id" name="resource-type-id"/>
+					<input type="hidden" id="edit-resource-type-parentId" name="resource-type-parentId">
+		            <div class="form-group">
+			              <label class="col-sm-2 control-label" >名称</label>
+			              <div class="col-sm-4">
+			                   <input type="text" id="edit-resource-type-name" name="resource-type-name"  placeholder="名称" class="form-control">
+				          </div>
+				          <label class="col-sm-2 control-label" >编码</label>
+			              <div class="col-sm-4">
+			                   <input type="text" id="edit-resource-type-code" name="resource-type-code" placeholder="编码" class="form-control">
+				          </div>
+		            </div>
+					<div class="form-group">
+			              <label class="col-sm-2 control-label" >图标</label>
+			              <div class="col-sm-4">
+			                   <input type="text" id="edit-resource-type-icon" name="resource-type-icon"  placeholder="图标" class="form-control">
+				          </div>
+				          <label class="col-sm-2 control-label" >序号</label>
+			              <div class="col-sm-4">
+			                   <input type="number" id="edit-resource-type-seq" name="resource-type-seq" placeholder="序号" class="form-control">
+				          </div>
+		            </div>
+		            <div class="form-group">
+						<label class="col-sm-2 control-label" >状态</label>
+						<div class="col-sm-4">
+							<input type="checkbox" id="edit-resource-type-active" name="resource-type-active" class="form-control">
+						</div>
+						<label class="col-sm-2 control-label" >描述</label>
+						<div class="col-sm-4">
+							<input type="text" id="edit-resource-type-remark" name="resource-type-remark" placeholder="描述" class="form-control">
+						</div>
+		            </div>
+				</form>
+			</div>
+			<div class="modal-footer" id="op">
+				<button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+				<button type="button" class="btn btn-primary" onclick="saveMenu()">确认</button>
+			</div>
+		 </div> 
+     </div>
+</div>
+<!-- dialog end -->
+
+
+<script src="/js/plugins/treeview/bootstrap-treeview.custom.js"></script>
+
+<!--
+<script src="/js/plugins/nestable/jquery.nestable.js"></script>
+-->
+<!--<script src="../../js/plugins/validate/bootstrapValidator.js"></script>-->
+<script src="../js/resource-type-list.js?v=4"></script>
+</body>
+</html>
